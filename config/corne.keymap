@@ -38,7 +38,7 @@
             >;
         };
 
-        lower_layer {
+        layer_1 {
             // -----------------------------------------------------------------------------------------
             // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
             // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
@@ -46,14 +46,14 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB    &kp ESC    &kp N1  &kp N2    &kp N3     &kp MINUS         &kp PAGE_UP           &kp HOME        &kp UP_ARROW    &kp END         &kp EQUAL        &kp BSPC
-&kp LSHFT  &kp GRAVE  &kp N4  &kp N5    &kp N6     &kp UNDERSCORE    &kp PAGE_DOWN         &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT       &kp PLUS         &kp PIPE
-&kp LCTRL  &kp LALT   &kp N7  &kp N8    &kp N9     &kp N0            &kp NON_US_BACKSLASH  &kp LBKT        &kp RBKT        &kp LEFT_BRACE  &kp RIGHT_BRACE  &kp DELETE
-                              &kp LGUI  &kp SPACE  &mo 1             &mo 2                 &kp ENTER       &kp RALT
+&kp TAB    &kp ESC    &kp N1  &kp N2    &kp N3     &kp MINUS         &kp PAGE_UP    &kp HOME           &kp UP_ARROW    &kp END          &kp EQUAL      &kp BSPC
+&kp LSHFT  &kp GRAVE  &kp N4  &kp N5    &kp N6     &kp UNDERSCORE    &kp PAGE_DOWN  &kp LEFT_ARROW     &kp DOWN_ARROW  &kp RIGHT        &kp PLUS       &kp PIPE
+&kp LCTRL  &kp LALT   &kp N7  &kp N8    &kp N9     &kp N0            &kp LBKT       &kp RIGHT_BRACKET  &kp LEFT_BRACE  &kp RIGHT_BRACE  &kp BACKSLASH  &kp DELETE
+                              &kp LGUI  &kp SPACE  &mo 1             &mo 2          &kp ENTER          &kp RALT
             >;
         };
 
-        raise_layer {
+        layer_2 {
             // -----------------------------------------------------------------------------------------
             // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
             // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
@@ -70,10 +70,10 @@
 
         layer_3 {
             bindings = <
-&bt BT_CLR_ALL  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4       &none  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &none  &none
-&kp LSHFT       &bt BT_PRV    &bt BT_NXT    &out OUT_TOG  &kp C_VOL_DN  &kp C_VOLUME_UP    &none  &kp KP_NUMBER_4  &none            &kp KP_NUMBER_6  &none  &none
-&kp LCTRL       &mkp MB1      &mkp MB3      &mkp MB2      &kp K_PREV    &kp K_FORWARD      &none  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &none  &none
-                                            &none         &none         &mo 1              &mo 2  &none            &none
+&bt BT_CLR_ALL  &bt BT_SEL 0     &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4       &kp K_SCROLL_UP    &mkp MB1         &kp KP_NUMBER_8  &mkp MB2         &mkp MB3  &none
+&kp LSHFT       &bt BT_PRV       &bt BT_NXT    &out OUT_TOG  &kp C_VOL_DN  &kp C_VOLUME_UP    &kp K_SCROLL_DOWN  &kp KP_NUMBER_4  &kp KP_NUMBER_2  &kp KP_NUMBER_6  &none     &none
+&kp LCTRL       &kp PRINTSCREEN  &none         &none         &mkp MB4      &mkp MB5           &none              &none            &none            &none            &none     &none
+                                               &none         &none         &mo 1              &mo 2              &none            &none
             >;
         };
     };
