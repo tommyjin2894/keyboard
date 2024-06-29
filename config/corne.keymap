@@ -56,10 +56,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB    &kp N1   &kp N2     &kp N3     &kp N4     &kp N5    &kp PAGE_UP    &kp HOME        &kp UP_ARROW    &kp END    &mkp MB1   &mkp MB2
-&kp LSHFT  &kp N6   &kp N7     &kp N8     &kp N9     &kp N0    &kp PAGE_DOWN  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT  &kp ENTER  &none
-&kp LCTRL  &kp ESC  &kp GRAVE  &kp TILDE  &kp UNDER  &none     &kp MINUS      &kp PLUS        &kp EQUAL       &none      &none      &none
-                               &kp LALT   &kp SPACE  &mo 1     &mo 2          &kp DEL         &kp BACKSPACE
+&kp TAB    &kp N1   &kp N2     &kp N3     &kp N4            &kp N5               &kp PAGE_UP    &kp HOME        &kp UP_ARROW    &kp END    &none  &none
+&kp LSHFT  &kp N6   &kp N7     &kp N8     &kp N9            &kp N0               &kp PAGE_DOWN  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT  &none  &none
+&kp LCTRL  &kp ESC  &kp GRAVE  &kp TILDE  &kp LEFT_BRACKET  &kp RIGHT_BRACKET    &kp MINUS      &kp PLUS        &kp EQUAL       &none      &none  &none
+                               &kp LALT   &kp SPACE         &mo 1                &mo 2          &kp DEL         &kp BACKSPACE
             >;
         };
 
@@ -71,10 +71,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB    &none       &none      &none      &kp LEFT_BRACKET      &kp RIGHT_BRACKET        &mkp MB1         &mkp MB2           &kp F1         &kp F2   &kp F3   &kp F4
-&kp LSHFT  &none       &none      &none      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS    &kp ENTER        &mkp MB3           &kp F5         &kp F6   &kp F7   &kp F8
-&kp LCTRL  &kp ESCAPE  &kp GRAVE  &kp TILDE  &kp LEFT_BRACKET      &kp RIGHT_BRACKET        &kp K_SCROLL_UP  &kp K_SCROLL_DOWN  &kp F9         &kp F10  &kp F11  &kp F12
-                                  &kp LALT   &kp SPACE             &mo 1                    &mo 2            &kp DEL            &kp BACKSPACE
+&kp TAB    &kp F1      &kp F2     &kp F3     &kp F4     &kp F5     &mkp MB1         &mkp MB2           &none          &none  &none  &none
+&kp LSHFT  &kp F6      &kp F7     &kp F8     &kp F9     &kp F10    &kp ENTER        &mkp MB3           &none          &none  &none  &none
+&kp LCTRL  &kp ESCAPE  &kp GRAVE  &kp TILDE  &kp F11    &kp F12    &kp K_SCROLL_UP  &kp K_SCROLL_DOWN  &none          &none  &none  &none
+                                  &kp LALT   &kp SPACE  &mo 1      &mo 2            &kp DEL            &kp BACKSPACE
             >;
         };
 
