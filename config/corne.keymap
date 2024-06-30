@@ -28,6 +28,11 @@
             bindings = <&kp LEFT_WIN>;
             key-positions = <36 37>;
         };
+
+        arlt {
+            bindings = <&kp RIGHT_ALT>;
+            key-positions = <40 41>;
+        };
     };
 
     keymap {
