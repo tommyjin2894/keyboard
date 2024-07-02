@@ -76,8 +76,8 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB    &kp ESCAPE  &kp F1  &kp F2  &kp F3  &kp F10    &kp ENTER  &mkp MB1  &kp PAGE_UP    &mkp MB2  &mkp MB3  &kp DELETE
-&kp LSHFT  &kp GRAVE   &kp F4  &kp F5  &kp F6  &kp F11    &none      &kp HOME  &kp PAGE_DOWN  &kp END   &none     &none
+&kp TAB    &kp ESCAPE  &kp F1  &kp F2  &kp F3  &kp F10    &kp LC(C)  &mkp MB1  &kp PAGE_UP    &mkp MB2  &mkp MB3  &kp DELETE
+&kp LSHFT  &kp GRAVE   &kp F4  &kp F5  &kp F6  &kp F11    &kp LC(V)  &kp HOME  &kp PAGE_DOWN  &kp END   &none     &none
 &kp LCTRL  &kp TILDE   &kp F7  &kp F8  &kp F9  &kp F12    &none      &none     &none          &none     &none     &none
                                &trans  &trans  &mo 1      &mo 2      &trans    &trans
             >;
