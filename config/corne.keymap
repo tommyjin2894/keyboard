@@ -37,7 +37,7 @@
 
         for_mouse {
             bindings = <&mo 4>;
-            key-positions = <28 37>;
+            key-positions = <29 37>;
         };
     };
 
