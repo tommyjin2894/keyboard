@@ -100,9 +100,9 @@
 
         layer_4 {
             bindings = <
-&none      &none      &kp PAGE_UP    U_MS_U      &kp PAGE_UP      &none      &none      &mkp MB1   U_WH_U    &mkp MB2    &mkp MB3      &kp PRINTSCREEN
+&none      &none      &kp PAGE_UP    U_MS_U      &kp PAGE_DOWN    &none      &none      &mkp MB1   U_WH_U    &mkp MB2    &mkp MB3      &kp PRINTSCREEN
 &none      &none      U_MS_L         U_MS_D      U_MS_R           &none      &none      U_WH_L     U_WH_D    U_WH_R      &none         &none
-&none      &none      &none          &none       &none            &none      &none      &none      &none     &none       &none         &none
+&none      &none      &kp HOME       &none       &kp END          &none      &none      &none      &none     &none       &none         &none
                                      &none       &none            &none      &none       &none      &none
             >;
         };
