@@ -31,6 +31,16 @@
             bindings = <&mo 3>;
             key-positions = <29 37>;
         };
+
+        ralt {
+            bindings = <&kp RIGHT_ALT>;
+            key-positions = <19 20 21>;
+        };
+
+        backspace {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <9 10>;
+        };
     };
 
     keymap {
