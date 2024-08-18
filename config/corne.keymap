@@ -41,6 +41,11 @@
             bindings = <&kp BACKSPACE>;
             key-positions = <9 10>;
         };
+
+        delete {
+            bindings = <&kp DELETE>;
+            key-positions = <8 9>;
+        };
     };
 
     keymap {
