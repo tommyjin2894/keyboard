@@ -51,7 +51,7 @@
         };
 
         &macro dajungone {
-        bindings = <&kp LA(LCTRL) &mo 1>;
+        bindings = <&kp LA(LCTRL(&mo 1))>;
         key-positions = <36 37 38>;
         };
 
