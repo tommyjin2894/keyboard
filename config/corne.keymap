@@ -51,7 +51,7 @@
         };
 
         wiondow {
-            bindings = <&kt LWIN>;
+            bindings = <&kp LWIN>;
             key-positions = <14 15 16>;
         };
     };
