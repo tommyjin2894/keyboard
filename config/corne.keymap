@@ -6,10 +6,8 @@
 
 #include "mouse.dtsi"
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/mouse.h>
-#include <dt-bindings/zmk/outputs.h>
 
 / {
     combos {
@@ -33,11 +31,6 @@
         for_mouse {
             bindings = <&mo 3>;
             key-positions = <29 37>;
-        };
-
-        ralt {
-            bindings = <&kp RIGHT_ALT>;
-            key-positions = <19 20 21>;
         };
 
         backspace {
@@ -67,9 +60,9 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&none  &kp Q  &kp W  &kp E      &kp R      &kp T    &kp Y  &kp U      &kp I           &kp O    &kp P     &none
-&none  &kp A  &kp S  &kp D      &kp F      &kp G    &kp H  &kp J      &kp K           &kp L    &kp SEMI  &none
-&none  &kp Z  &kp X  &kp C      &kp V      &kp B    &kp N  &kp M      &kp COMMA       &kp DOT  &none     &none
+&none  &kp Q  &kp W  &kp E      &kp R      &kp T    &kp Y  &kp U      &kp I           &kp O    &kp P          &none
+&none  &kp A  &kp S  &kp D      &kp F      &kp G    &kp H  &kp J      &kp K           &kp L    &kp SEMI       &none
+&none  &kp Z  &kp X  &kp C      &kp V      &kp B    &kp N  &kp M      &kp COMMA       &kp DOT  &kp RIGHT_ALT  &none
                      &kp LCTRL  &kp SPACE  &mo 1    &mo 2  &kp ENTER  &kp LEFT_SHIFT
             >;
         };
@@ -94,10 +87,9 @@
 
         layer_3 {
             bindings = <
-&none         &none      &mkp MB4       U_MS_U      &mkp MB5    &kp C_VOLUME_UP       &kp PAGE_UP      &mkp MB1   U_WH_U    &mkp MB2    &mkp MB3      &none
-&none         &none      U_MS_L         U_MS_D      U_MS_R      &kp C_VOL_DN          &kp PAGE_DOWN    U_WH_L     U_WH_D    U_WH_R      &none         &none
-&none         &none      &kp F7         &none       &none       &none                 &none            &none      &none     &none       &none         &none
-                                        &trans      &trans           &none            &none      &none      &none
+&none         &none                               &mkp MB4 U_MS_U  &mkp MB5  &kp C_VOLUME_UP  &kp PAGE_UP    &mkp MB1 U_WH_U  &mkp MB2  &mkp MB3  &none  &none  &none U_MS_L U_MS_D U_MS_R
+&kp C_VOL_DN  &kp PAGE_DOWN U_WH_L U_WH_D U_WH_R  &none            &none     &none            &none          &kp F7           &none     &none     &none  &none  &none
+&none         &none                               &none            &none     &trans           &trans         &none            &none     &none     &none
             >;
         };
     };
