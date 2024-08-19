@@ -19,12 +19,12 @@
         };
 
         caps {
-            bindings = <&kp CAPS>;
+            bindings = <&kp LEFT_SHIFT>;
             key-positions = <37 40>;
         };
 
         windowkey {
-            bindings = <&kp LEFT_SHIFT>;
+            bindings = <&kp CAPSLOCK>;
             key-positions = <36 37>;
         };
 
