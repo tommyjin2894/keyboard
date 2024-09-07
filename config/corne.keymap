@@ -47,7 +47,7 @@
 
         wiondow {
             bindings = <&kp LWIN>;
-            key-positions = <14 15 16>;
+            key-positions = <25 26 27>;
         };
 
         lclr {
