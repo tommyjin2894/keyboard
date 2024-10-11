@@ -4,13 +4,15 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: urob
       url-base: https://github.com/urob
+    - name: krikun98
+      url-base: https://github.com/krikun98
+    - name: ftc
+      url-base: https://github.com/ftc
   projects:
     - name: zmk
       remote: urob
       revision: main
       import: app/west.yml
     - name: zmk-helpers
-      remote: urob
-      revision: v2
   self:
     path: config
