@@ -22,14 +22,9 @@
             key-positions = <38 37>;
         };
 
-        caps {
-            bindings = <&kp LEFT_SHIFT>;
-            key-positions = <37 40>;
-        };
-
-        windowkey {
+        caps_lock {
             bindings = <&kp CAPSLOCK>;
-            key-positions = <36 37>;
+            key-positions = <12 13>;
         };
 
         for_mouse {
@@ -93,7 +88,7 @@
         layer_2 {
             bindings = <
 &none  &kp ESC    &kp F1  &kp F2  &kp F3  &kp F12    &kp LC(X)           &kp LC(C)           &kp LC(V)  &none  &none  &none
-&none  &kp GRAVE  &kp F4  &kp F5  &kp F6  &kp F11    &kp LA(TAB)         &kp PRINTSCREEN     &none      &none  &none  &none
+&none  &kp GRAVE  &kp F4  &kp F5  &kp F6  &kp F11    &kp LWIN(TAB)       &kp PRINTSCREEN     &none      &none  &none  &none
 &none  &kp TAB    &kp F7  &kp F8  &kp F9  &kp F10    &kp LS(LC(DELETE))  &kp LC(LA(DELETE))  &none      &none  &none  &none
                           &none   &none   &none      &none               &none               &none
             >;
