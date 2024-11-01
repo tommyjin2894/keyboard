@@ -25,9 +25,9 @@
             key-positions = <37 40>;
         };
 
-        windowkey {
+        capsman {
             bindings = <&kp CAPSLOCK>;
-            key-positions = <36 37>;
+            key-positions = <13 14>;
         };
 
         for_mouse {
