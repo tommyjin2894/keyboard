@@ -45,14 +45,19 @@
             key-positions = <8 9>;
         };
 
-        wiondow {
+        change_window_key {
             bindings = <&kp LG(TAB)>;
             key-positions = <25 26 27>;
         };
 
+        left_window_key {
+            bindings = <&kp LWIN>;
+            key-positions = <26 27 28>;
+        };
+
         lclr {
             bindings = <&kp LC(LEFT_ALT)>;
-            key-positions = <26 27 28>;
+            key-positions = <27 28 29>;
         };
 
         bt {
@@ -91,7 +96,7 @@
         layer_2 {
             bindings = <
 &none  &kp ESC    &kp F1  &kp F2  &kp F3  &kp F12    &kp LC(X)           &kp LC(C)           &kp LC(V)  &none  &none  &none
-&none  &kp GRAVE  &kp F4  &kp F5  &kp F6  &kp F11    &kp LWIN            &kp PRINTSCREEN     &none      &none  &none  &none
+&none  &kp GRAVE  &kp F4  &kp F5  &kp F6  &kp F11    &none               &kp PRINTSCREEN     &none      &none  &none  &none
 &none  &kp TAB    &kp F7  &kp F8  &kp F9  &kp F10    &kp LS(LC(DELETE))  &kp LC(LA(DELETE))  &none      &none  &none  &none
                           &none   &none   &none      &none               &none               &none
             >;
