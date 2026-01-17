@@ -21,7 +21,7 @@
         };
 
         caps {
-            bindings = <&to 4>;
+            bindings = <&to 5>;
             key-positions = <37 40>;
         };
 
