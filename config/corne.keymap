@@ -15,26 +15,18 @@
     combos {
         compatible = "zmk,combos";
 
-        /* Space(37) + Enter(40) = 맥 레이어(1번) 토글 */
-        toggle_os {
-            bindings = <&tog 1>;
-            key-positions = <37 40>;
-        };
-
-        /* Z(25) + X(26) = Left Control (공용) */
-        combo_lctrl {
-            bindings = <&kp LCTRL>;
-            key-positions = <25 26>;
-            timeout-ms = <50>;
-        };
-
         double_func {
             bindings = <&kp LEFT_ALT>;
             key-positions = <38 37>;
         };
 
+        caps {
+            bindings = <&tog 1>;
+            key-positions = <37 40>;
+        };
+
         for_mouse {
-            bindings = <&mo 5>; /* 마우스 레이어 5번으로 연결 */
+            bindings = <&mo 4>;
             key-positions = <29 37>;
         };
 
@@ -64,7 +56,7 @@
         };
 
         bt {
-            bindings = <&mo 6>; /* BT 레이어 6번으로 연결 */
+            bindings = <&mo 5>;
             key-positions = <40 30>;
         };
     };
@@ -72,68 +64,58 @@
     keymap {
         compatible = "zmk,keymap";
 
-        /* Layer 0: Windows 기본 바닥 */
         default_layer {
+            // -----------------------------------------------------------------------------------------
+            // | 00 | 01 | 02 | 03 | 04 | 05 |   | 06 | 07 | 08 | 09 | 10 | 11 |
+            // | 12 | 13 | 14 | 15 | 16 | 17 |   | 18 | 19 | 20 | 21 | 22 | 23 |
+            // | 24 | 25 | 26 | 27 | 28 | 29 |   | 30 | 31 | 32 | 33 | 34 | 35 |
+            //                | 36 | 37 | 38 |   | 39 | 40 | 41 |
+
             bindings = <
-&none  &kp Q  &kp W  &kp E      &kp R      &kp T    &kp Y  &kp U      &kp I      &kp O    &kp P        &none
-&none  &kp A  &kp S  &kp D      &kp F      &kp G    &kp H  &kp J      &kp K      &kp L    &kp SEMI     &none
-&none  &kp Z  &kp X  &kp C      &kp V      &kp B    &kp N  &kp M      &kp COMMA  &kp DOT  &kp LSHIFT   &none
+&none  &kp Q  &kp W  &kp E      &kp R      &kp T    &kp Y  &kp U      &kp I          &kp O    &kp P       &none
+&none  &kp A  &kp S  &kp D      &kp F      &kp G    &kp H  &kp J      &kp K          &kp L    &kp SEMI    &none
+&none  &kp Z  &kp X  &kp C      &kp V      &kp B    &kp N  &kp M      &kp COMMA      &kp DOT  &kp LSHIFT  &none
                      &kp LCTRL  &kp SPACE  &mo 2    &mo 3  &kp ENTER  &kp RIGHT_ALT
             >;
         };
+        layer_1 {
+            // mac layer
 
-        /* Layer 1: Mac 기본 바닥 (tog 1로 켜짐) */
-        mac_layer {
             bindings = <
-&none  &kp Q  &kp W  &kp E      &kp R      &kp T    &kp Y  &kp U      &kp I      &kp O    &kp P        &none
-&none  &kp A  &kp S  &kp D      &kp F      &kp G    &kp H  &kp J      &kp K      &kp L    &kp SEMI     &none
-&none  &kp Z  &kp X  &kp C      &kp V      &kp B    &kp N  &kp M      &kp COMMA  &kp DOT  &kp LSHIFT   &none
-                     &kp LGUI   &kp SPACE  &mo 2    &mo 4  &kp ENTER  &kp LC(SPACE)
+&none  &kp Q  &kp W  &kp E      &kp R      &kp T    &kp Y  &kp U      &kp I          &kp O    &kp P       &none
+&none  &kp A  &kp S  &kp D      &kp F      &kp G    &kp H  &kp J      &kp K          &kp L    &kp SEMI    &none
+&none  &kp Z  &kp X  &kp C      &kp V      &kp B    &kp N  &kp M      &kp COMMA      &kp DOT  &kp LSHIFT  &none
+                     &kp LGUI   &kp SPACE  &mo 2    &mo 3  &kp ENTER  &kp LC(SPACE)
+            >;
+        };
+        layer_2 {
+            bindings = <
+&none  &kp ESC    &kp N1  &kp N2  &kp N3  &kp EQUAL    &none      &kp HOME        &kp UP_ARROW      &kp END            &none    &none
+&none  &kp GRAVE  &kp N4  &kp N5  &kp N6  &kp MINUS    &none      &kp LEFT_ARROW  &kp DOWN_ARROW    &kp RIGHT_ARROW    &kp SQT  &none
+&none  &kp TAB    &kp N7  &kp N8  &kp N9  &kp N0       &kp SLASH  &kp BACKSLASH   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &trans   &none
+                          &trans  &trans  &trans       &trans     &trans          &trans
             >;
         };
 
-        /* Layer 2: 숫자 (공통) */
-        layer_num {
+        layer_3 {
             bindings = <
-&none  &kp ESC    &kp N1  &kp N2  &kp N3  &kp EQUAL    &none       &kp HOME        &kp UP_ARROW    &kp END            &none    &none
-&none  &kp GRAVE  &kp N4  &kp N5  &kp N6  &kp MINUS    &none       &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW    &kp SQT  &none
-&none  &kp TAB    &kp N7  &kp N8  &kp N9  &kp N0       &kp SLASH   &kp BACKSLASH   &kp LEFT_BRACKET &kp RIGHT_BRACKET &trans   &none
-                          &trans  &trans  &trans       &trans      &trans          &trans
+&none  &kp ESC    &kp F1  &kp F2  &kp F3  &kp F12    &kp LC(X)           &kp LC(C)           &kp LC(V)  &none  &none  &none
+&none  &kp GRAVE  &kp F4  &kp F5  &kp F6  &kp F11    &none               &kp PRINTSCREEN     &none      &none  &none  &none
+&none  &kp TAB    &kp F7  &kp F8  &kp F9  &kp F10    &kp LS(LC(DELETE))  &kp LC(LA(DELETE))  &none      &none  &none  &none
+                          &none   &none   &none      &none               &none               &none
             >;
         };
 
-        /* Layer 3: Windows 단축키 (mo 3) */
-        layer_win_fn {
+        layer_4 {
             bindings = <
-&none  &kp ESC    &kp F1  &kp F2  &kp F3  &kp F12    &kp LC(X)       &kp LC(C)       &kp LC(V)  &none  &none  &none
-&none  &kp GRAVE  &kp F4  &kp F5  &kp F6  &kp F11    &none           &kp PRINTSCREEN &none      &none  &none  &none
-&none  &kp TAB    &kp F7  &kp F8  &kp F9  &kp F10    &kp LS(LC(DELETE)) &kp LC(LA(DELETE)) &none      &none  &none  &none
-                          &none   &none   &none      &none           &none           &none
+&none      &none      &mkp MB4       U_MS_U      &mkp MB5    &kp C_VOLUME_UP       &kp PAGE_UP      &mkp MB1   U_WH_U    &mkp MB2    &mkp MB3      &none
+&none      &none      U_MS_L         U_MS_D      U_MS_R      &kp C_VOL_DN          &kp PAGE_DOWN    U_WH_L     U_WH_D    U_WH_R      &none         &none
+&none      &none      &kp F7         &none       &none       &none                 &none            &none      &none     &none       &none         &none
+                                         &trans      &trans           &none                  &none      &none      &none
             >;
         };
 
-        /* Layer 4: Mac 단축키 (mo 4) */
-        layer_mac_fn {
-            bindings = <
-&none  &kp ESC    &kp F1  &kp F2  &kp F3  &kp F12    &kp LG(X)       &kp LG(C)       &kp LG(V)      &none  &none  &none
-&none  &kp GRAVE  &kp F4  &kp F5  &kp F6  &kp F11    &none           &kp LG(LS(N4))  &none          &none  &none  &none
-&none  &kp TAB    &kp F7  &kp F8  &kp F9  &kp F10    &kp LG(BSPC)    &kp LG(LA(ESC)) &none          &none  &none  &none
-                          &none   &none   &none      &none           &none           &none
-            >;
-        };
-
-        /* Layer 5: Mouse */
-        layer_mouse {
-            bindings = <
-&none      &none      &mkp MB4       U_MS_U       &mkp MB5     &kp C_VOLUME_UP       &kp PAGE_UP       &mkp MB1    U_WH_U     &mkp MB2     &mkp MB3       &none
-&none      &none      &U_MS_L        U_MS_D       &U_MS_R      &kp C_VOL_DN          &kp PAGE_DOWN     &U_WH_L     U_WH_D     &U_WH_R      &none          &none
-&none      &none      &kp F7         &none        &none        &none                 &none             &none       &none      &none        &none          &none
-                                     &trans       &trans       &none                 &none             &none       &none
-            >;
-        };
-
-        /* Layer 6: BT */
-        layer_bt {
+        layer_5 {
             bindings = <
 &none  &none  &none  &none  &none  &none    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR_ALL  &none
 &none  &none  &none  &none  &none  &none    &none         &none         &none         &out OUT_BLE  &out OUT_USB    &none
