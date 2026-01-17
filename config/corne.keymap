@@ -15,13 +15,13 @@
     combos {
         compatible = "zmk,combos";
 
-        /* [NEW] 37(Space) + 40(Enter) = Mac/Win 레이어 전환 */
+        /* 37(Space) + 40(Enter)를 누르면 Mac 레이어(5번) 토글 */
         toggle_os {
-            bindings = <&tog 1>;
+            bindings = <&tog 5>;
             key-positions = <37 40>;
         };
 
-        /* [NEW] Z(25) + X(26) = Left Control (맥에서 찐컨트롤 필요할 때) */
+        /* Z(25) + X(26) = Left Control (맥에서 터미널 작업 시 사용) */
         combo_lctrl {
             bindings = <&kp LCTRL>;
             key-positions = <25 26>;
@@ -33,16 +33,10 @@
             key-positions = <38 37>;
         };
 
-        left_shift {
-            bindings = <&kp LEFT_ALT>;
-            key-positions = <13 14>;
-        };
-
-        /* 기존 caps 콤보가 37 40이었으므로, OS 전환과 겹치지 않게 제거하거나 유지 가능 */
-        /* 여기서는 OS 전환을 우선순위로 두었습니다. */
+        /* 기존 caps 콤보가 37 40이었으므로 중복을 피하기 위해 제거하거나 위치를 조정하십시오. */
 
         for_mouse {
-            bindings = <&mo 5>; /* 레이어 번호 이동 (Mouse: 5) */
+            bindings = <&mo 3>;
             key-positions = <29 37>;
         };
 
@@ -72,7 +66,7 @@
         };
 
         bt {
-            bindings = <&mo 6>; /* 레이어 번호 이동 (BT: 6) */
+            bindings = <&mo 4>;
             key-positions = <40 30>;
         };
     };
@@ -80,29 +74,18 @@
     keymap {
         compatible = "zmk,keymap";
 
-        /* Layer 0: Windows Default */
+        /* Layer 0: Windows 기본 */
         default_layer {
             bindings = <
 &none  &kp Q  &kp W  &kp E      &kp R      &kp T    &kp Y  &kp U      &kp I      &kp O    &kp P        &none
 &none  &kp A  &kp S  &kp D      &kp F      &kp G    &kp H  &kp J      &kp K      &kp L    &kp SEMI     &none
 &none  &kp Z  &kp X  &kp C      &kp V      &kp B    &kp N  &kp M      &kp COMMA  &kp DOT  &kp LSHIFT   &none
-                     &kp LCTRL  &kp SPACE  &mo 2    &mo 3  &kp ENTER  &kp RIGHT_ALT
+                     &kp LCTRL  &kp SPACE  &mo 1    &mo 2  &kp ENTER  &kp RIGHT_ALT
             >;
         };
 
-        /* Layer 1: Mac Default (Space+Enter로 토글) */
-        mac_layer {
-            bindings = <
-&none  &kp Q  &kp W  &kp E      &kp R      &kp T    &kp Y  &kp U      &kp I      &kp O    &kp P        &none
-&none  &kp A  &kp S  &kp D      &kp F      &kp G    &kp H  &kp J      &kp K      &kp L    &kp SEMI     &none
-&none  &kp Z  &kp X  &kp C      &kp V      &kp B    &kp N  &kp M      &kp COMMA  &kp DOT  &kp LSHIFT   &none
-                     &kp LGUI   &kp SPACE  &mo 2    &mo 4  &kp ENTER  &kp LC(SPACE)
-/* 36번(LGUI=Cmd), 39번(mo 4=Mac단축키), 41번(한영전환) */
-            >;
-        };
-
-        /* Layer 2: Numbers (기존 Layer 1) */
-        number_layer {
+        /* Layer 1: 숫자 (기존 동일) */
+        layer_1 {
             bindings = <
 &none  &kp ESC    &kp N1  &kp N2  &kp N3  &kp EQUAL    &none       &kp HOME        &kp UP_ARROW    &kp END            &none    &none
 &none  &kp GRAVE  &kp N4  &kp N5  &kp N6  &kp MINUS    &none       &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW    &kp SQT  &none
@@ -111,8 +94,8 @@
             >;
         };
 
-        /* Layer 3: Windows Shortcuts (기존 Layer 2) */
-        win_func_layer {
+        /* Layer 2: 단축키 (기존 동일) */
+        layer_2 {
             bindings = <
 &none  &kp ESC    &kp F1  &kp F2  &kp F3  &kp F12    &kp LC(X)       &kp LC(C)       &kp LC(V)  &none  &none  &none
 &none  &kp GRAVE  &kp F4  &kp F5  &kp F6  &kp F11    &none           &kp PRINTSCREEN &none      &none  &none  &none
@@ -121,33 +104,33 @@
             >;
         };
 
-        /* Layer 4: Mac Shortcuts (Cmd 기반) */
-        mac_func_layer {
+        /* Layer 3: Mouse (기존 동일) */
+        layer_3 {
             bindings = <
-&none  &kp ESC    &kp F1  &kp F2  &kp F3  &kp F12    &kp LG(X)       &kp LG(C)       &kp LG(V)      &none  &none  &none
-&none  &kp GRAVE  &kp F4  &kp F5  &kp F6  &kp F11    &none           &kp LG(LS(N3))  &none          &none  &none  &none
-&none  &kp TAB    &kp F7  &kp F8  &kp F9  &kp F10    &kp LG(BS)      &kp LG(LA(ESC)) &none          &none  &none  &none
-                          &none   &none   &none      &none           &none           &none
+&none      &none      &mkp MB4       U_MS_U       &mkp MB5     &kp C_VOLUME_UP       &kp PAGE_UP       &mkp MB1    U_WH_U     &mkp MB2     &mkp MB3       &none
+&none      &none      &U_MS_L        U_MS_D       &U_MS_R      &kp C_VOL_DN          &kp PAGE_DOWN     &U_WH_L     U_WH_D     &U_WH_R      &none          &none
+&none      &none      &kp F7         &none        &none        &none                 &none             &none       &none      &none        &none          &none
+                                     &trans       &trans       &none                 &none             &none       &none
             >;
         };
 
-        /* Layer 5: Mouse (기존 Layer 3) */
-        mouse_layer {
-            bindings = <
-&none  &none  &mkp MB4  U_MS_U  &mkp MB5  &kp C_VOLUME_UP    &kp PAGE_UP    &mkp MB1  U_WH_U  &mkp MB2  &mkp MB3  &none
-&none  &none  &U_MS_L   U_MS_D  &U_MS_R   &kp C_VOL_DN       &kp PAGE_DOWN  &U_WH_L   U_WH_D  &U_WH_R   &none     &none
-&none  &none  &kp F7    &none   &none     &none              &none          &none     &none   &none     &none     &none
-                        &trans  &trans    &none              &none          &none     &none
-            >;
-        };
-
-        /* Layer 6: Bluetooth (기존 Layer 4) */
-        bt_layer {
+        /* Layer 4: BT (기존 동일) */
+        layer_4 {
             bindings = <
 &none  &none  &none  &none  &none  &none    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR_ALL  &none
 &none  &none  &none  &none  &none  &none    &none         &none         &none         &out OUT_BLE  &out OUT_USB    &none
 &none  &none  &none  &none  &none  &none    &none         &none         &none         &none         &none           &none
                      &none  &none  &none    &none         &none         &none
+            >;
+        };
+
+        /* Layer 5: [NEW] Mac 베이스 레이어 */
+        mac_layer {
+            bindings = <
+&none  &kp Q  &kp W  &kp E      &kp R      &kp T    &kp Y  &kp U      &kp I      &kp O    &kp P        &none
+&none  &kp A  &kp S  &kp D      &kp F      &kp G    &kp H  &kp J      &kp K      &kp L    &kp SEMI     &none
+&none  &kp Z  &kp X  &kp C      &kp V      &kp B    &kp N  &kp M      &kp COMMA  &kp DOT  &kp LSHIFT   &none
+                     &kp LGUI   &kp SPACE  &mo 1    &mo 2  &kp ENTER  &kp LC(SPACE)
             >;
         };
     };
