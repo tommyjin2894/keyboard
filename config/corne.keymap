@@ -4,44 +4,33 @@
  * SPDX-License-Identifier: MIT
  */
 
-/* mouse.dtsi를 가장 먼저 불러옵니다 */
+/* mouse.dtsi는 가장 위에 둡니다 */
 #include "mouse.dtsi"
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/mouse.h>
 #include <dt-bindings/zmk/outputs.h>
 
 / {
-    macros {
-        /* [NEW] 맥 스크린샷 매크로 (Command + Shift + 3) 
-         * 괄호 중첩 오류를 피하기 위해 매크로로 만들었습니다. 
-         */
-        mac_shot: mac_screenshot {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LGUI &kp LSHIFT>
-                , <&macro_tap &kp N3>
-                , <&macro_release &kp LGUI &kp LSHIFT>;
-        };
-    };
-
     combos {
         compatible = "zmk,combos";
 
-        /* 1. Windows <-> Mac 전환 (Space + Enter) */
+        /* [추가됨] 1. 윈도우/맥 레이어 전환 (Space + Enter) */
         toggle_os {
             bindings = <&tog 1>;
             key-positions = <37 40>;
         };
 
-        /* 2. Real Control 키 (Z + X) */
+        /* [추가됨] 2. 찐 컨트롤 키 (Z + X) */
         combo_lctrl {
             bindings = <&kp LCTRL>;
             key-positions = <25 26>;
             timeout-ms = <50>;
         };
+
+        /* --- 기존 콤보들 (내용 유지) --- */
 
         double_func {
             bindings = <&kp LEFT_ALT>;
@@ -59,7 +48,7 @@
         };
 
         for_mouse {
-            bindings = <&mo 5>;
+            bindings = <&mo 5>; /* 마우스 레이어 번호 5 */
             key-positions = <29 37>;
         };
 
@@ -89,7 +78,7 @@
         };
 
         bt {
-            bindings = <&mo 6>;
+            bindings = <&mo 6>; /* BT 레이어 번호 6 */
             key-positions = <40 30>;
         };
     };
@@ -97,9 +86,74 @@
     keymap {
         compatible = "zmk,keymap";
 
-        /* Layer 0: Windows Default */
+        /* Layer 0: Windows 기본 */
         default_layer {
             bindings = <
 &none  &kp Q  &kp W  &kp E      &kp R      &kp T    &kp Y  &kp U      &kp I      &kp O    &kp P        &none
 &none  &kp A  &kp S  &kp D      &kp F      &kp G    &kp H  &kp J      &kp K      &kp L    &kp SEMI     &none
-&none  &kp Z  &kp X  &kp C      &kp V      &kp B    &kp N  &kp M      &kp COMMA  &kp DOT  &kp LSHIFT   &
+&none  &kp Z  &kp X  &kp C      &kp V      &kp B    &kp N  &kp M      &kp COMMA  &kp DOT  &kp LSHIFT   &none
+                     &kp LCTRL  &kp SPACE  &mo 2    &mo 3  &kp ENTER  &kp RIGHT_ALT
+            >;
+        };
+
+        /* Layer 1: Mac 기본 (Space+Enter로 진입) */
+        mac_layer {
+            bindings = <
+&none  &kp Q  &kp W  &kp E      &kp R      &kp T    &kp Y  &kp U      &kp I      &kp O    &kp P        &none
+&none  &kp A  &kp S  &kp D      &kp F      &kp G    &kp H  &kp J      &kp K      &kp L    &kp SEMI     &none
+&none  &kp Z  &kp X  &kp C      &kp V      &kp B    &kp N  &kp M      &kp COMMA  &kp DOT  &kp LSHIFT   &none
+                     &kp LGUI   &kp SPACE  &mo 2    &mo 4  &kp ENTER  &kp LC(SPACE)
+            >;
+        };
+
+        /* Layer 2: 숫자 (공통) */
+        number_layer {
+            bindings = <
+&none  &kp ESC    &kp N1  &kp N2  &kp N3  &kp EQUAL    &none       &kp HOME        &kp UP_ARROW    &kp END            &none    &none
+&none  &kp GRAVE  &kp N4  &kp N5  &kp N6  &kp MINUS    &none       &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW    &kp SQT  &none
+&none  &kp TAB    &kp N7  &kp N8  &kp N9  &kp N0       &kp SLASH   &kp BACKSLASH   &kp LEFT_BRACKET &kp RIGHT_BRACKET &trans   &none
+                          &trans  &trans  &trans       &trans      &trans          &trans
+            >;
+        };
+
+        /* Layer 3: Windows 단축키 */
+        win_func_layer {
+            bindings = <
+&none  &kp ESC    &kp F1  &kp F2  &kp F3  &kp F12    &kp LC(X)       &kp LC(C)       &kp LC(V)  &none  &none  &none
+&none  &kp GRAVE  &kp F4  &kp F5  &kp F6  &kp F11    &none           &kp PRINTSCREEN &none      &none  &none  &none
+&none  &kp TAB    &kp F7  &kp F8  &kp F9  &kp F10    &kp LS(LC(DELETE)) &kp LC(LA(DELETE)) &none      &none  &none  &none
+                          &none   &none   &none      &none           &none           &none
+            >;
+        };
+
+        /* Layer 4: Mac 단축키 */
+        mac_func_layer {
+            bindings = <
+&none  &kp ESC    &kp F1  &kp F2  &kp F3  &kp F12    &kp LG(X)       &kp LG(C)       &kp LG(V)  &none  &none  &none
+&none  &kp GRAVE  &kp F4  &kp F5  &kp F6  &kp F11    &none           &kp LG(N3)      &none      &none  &none  &none
+&none  &kp TAB    &kp F7  &kp F8  &kp F9  &kp F10    &kp LG(BS)      &kp LG(LA(ESC)) &none      &none  &none  &none
+                          &none   &none   &none      &none           &none           &none
+            >;
+        };
+
+        /* Layer 5: Mouse */
+        mouse_layer {
+            bindings = <
+&none  &none  &mkp MB4  U_MS_U  &mkp MB5  &kp C_VOLUME_UP    &kp PAGE_UP    &mkp MB1  U_WH_U  &mkp MB2  &mkp MB3  &none
+&none  &none  &U_MS_L   U_MS_D  &U_MS_R   &kp C_VOL_DN       &kp PAGE_DOWN  &U_WH_L   U_WH_D  &U_WH_R   &none     &none
+&none  &none  &kp F7    &none   &none     &none              &none          &none     &none   &none     &none     &none
+                        &trans  &trans    &none              &none          &none     &none
+            >;
+        };
+
+        /* Layer 6: Bluetooth */
+        bt_layer {
+            bindings = <
+&none  &none  &none  &none  &none  &none    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR_ALL  &none
+&none  &none  &none  &none  &none  &none    &none         &none         &none         &out OUT_BLE  &out OUT_USB    &none
+&none  &none  &none  &none  &none  &none    &none         &none         &none         &none         &none           &none
+                     &none  &none  &none    &none         &none         &none
+            >;
+        };
+    };
+};
